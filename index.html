@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,9 +12,8 @@ body {
   text-align: center;
 }
 
-/* typing text */
-#typing {
-  font-size: 2.5em;
+/* heading */
+h1 {
   color: #ff4d6d;
   margin-top: 40px;
 }
@@ -27,6 +26,13 @@ body {
   border-radius: 20px;
   max-width: 400px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 
 /* images */
@@ -36,7 +42,7 @@ img {
   margin-top: 10px;
 }
 
-/* buttons */
+/* button */
 button {
   padding: 12px 20px;
   border: none;
@@ -47,7 +53,7 @@ button {
   cursor: pointer;
 }
 
-/* hidden message */
+/* final message */
 #finalMsg {
   display: none;
   margin-top: 15px;
@@ -59,28 +65,35 @@ button {
 
 <body>
 
-<h1 id="typing"></h1>
+<h1>Uditt... ❤️</h1>
 
-<!-- MUSIC BUTTON AT TOP -->
+<!-- MUSIC BUTTON -->
 <div class="card">
   <button onclick="playMusic()">Click this once 💔</button>
 </div>
 
-<div class="card">I know I hurt you… and I’m truly sorry.</div>
+<!-- SORRY TEXT -->
+<div class="card">
+  Uditt, I know I hurt you… and I’m truly sorry.<br><br>
+  I never meant to make you feel this way.<br>
+  You mean so much to me, more than I ever showed.<br><br>
+  Please forgive me… 💔
+</div>
 
+<!-- PHOTOS -->
 <div class="card">
   <img src="photo1.jpg">
-  <p>You make me feel safe in a way no one else does.</p>
+  <p>You make me feel safe in a way no one else does, Uditt.</p>
 </div>
 
 <div class="card">
   <img src="photo2.jpg">
-  <p>I didn’t value what I had… and I regret it.</p>
+  <p>I didn’t value what I had… and I regret it deeply.</p>
 </div>
 
 <div class="card">
   <img src="photo3.jpg">
-  <p>I miss us… I miss your presence.</p>
+  <p>I miss us… I miss your presence every day.</p>
 </div>
 
 <div class="card">
@@ -90,9 +103,10 @@ button {
 
 <div class="card">
   <img src="photo5.jpg">
-  <p>Please don’t give up on us…</p>
+  <p>Please don’t give up on us, Uditt…</p>
 </div>
 
+<!-- FINAL MESSAGE -->
 <div class="card">
   <button onclick="showFinal()">Can you forgive me?</button>
   <p id="finalMsg">I love you, Uditt… please give me one more chance ❤️</p>
@@ -105,27 +119,18 @@ button {
 
 <script>
 
-/* typing effect */
-let text = "Uditt...";
-let i = 0;
-
-function type() {
-  if (i < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 150);
-  }
-}
-type();
-
 /* play music */
 function playMusic() {
   let music = document.getElementById("music");
-  music.volume = 0.5;
-  music.play();
+  music.volume = 1;
+  music.muted = false;
+
+  music.play().catch(() => {
+    alert("Tap again to play music");
+  });
 }
 
-/* show final message */
+/* final message */
 function showFinal() {
   document.getElementById("finalMsg").style.display = "block";
 }
